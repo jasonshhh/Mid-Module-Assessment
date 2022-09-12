@@ -1,5 +1,8 @@
 import sys
 import itertools
+import numpy as np
+
+graph = np.random.rand((3, 3))
 
 NO_PATH = sys.maxsize
 graph = [[0, 7, NO_PATH, 8],
