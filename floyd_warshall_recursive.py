@@ -2,10 +2,10 @@ import sys
 import itertools
 import numpy as np
 
-graph = np.random.rand((3, 3))
+#graph = np.random.rand((3, 3))
 
 NO_PATH = sys.maxsize
-graph = [[0, 7, NO_PATH, 8],
+graph = [[0, 'x', NO_PATH, 8],
         [NO_PATH, 0, 5, NO_PATH],
         [NO_PATH, NO_PATH, 0, 2],
         [NO_PATH, NO_PATH, NO_PATH, 0]]
@@ -13,17 +13,24 @@ vertices = len(graph[0])
 
 # Just testing GitHub again/ one more time
 def shortestPath(i, j, k, p):
-    if k < 0:
-        return(p[i][j])
-    elif i==j:
-        return 0
-    else:
-        return min(shortestPath(i, j, k-1, p), shortestPath(i, k, k-1, p) + shortestPath(k, j, k-1, p))
+        if k < 0:
+            return(p[i][j])
+        elif i==j:
+            return 0
+        elif p[i][i] < 0:
+            return print('A negative loop has been found')
+        else:
+            return min(shortestPath(i, j, k-1, p), shortestPath(i, k, k-1, p) + shortestPath(k, j, k-1, p))
 
 def floydWarshall(dist_graph):
     for i in range(vertices):
         for j in range(vertices):
-            dist_graph[i][j] = shortestPath(i, j, vertices - 1, dist_graph)
+            try:
+                dist_graph[i][j] = shortestPath(i, j, vertices - 1, dist_graph)
+            except:
+                #dist_graph[i][j] = str
+                return print('graph contains an unsupported character type, ensure all characters are integers')
+
     printSolution(dist_graph)
     #return dist_graph
 
