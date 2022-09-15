@@ -11,7 +11,7 @@ graph = [[0, 7, NO_PATH, 8],
         [NO_PATH, NO_PATH, 0, 2],
         [NO_PATH, NO_PATH, NO_PATH, 0]]
 
-# vertices = 5 
+vertices = len(graph) 
 #vertices = vertice + 1
 # vertices = len(graph[0])
 
@@ -78,14 +78,10 @@ class testFloydWarshall(unittest.TestCase):
     #     vertices = vertices + 1
     #     for i in range(vertices):
     #         for j in range(vertices):
-    #             graph[i][j] = shortestPath(i, j, vertices, graph)
-        
-        actual = floydWarshall(graph)
-        expected = print('Number of vertices out of range. Check input')
-        self.assertEqual(actual, expected)
-
-               
-        
+    # #             graph[i][j] = shortestPath(i, j, vertices, graph)
+    #     actual = floydWarshall(graph)
+    #     expected = print('Number of vertices out of range. Check input')
+    #     self.assertEqual(actual, expected)
 
 class testshortestPath(unittest.TestCase):
     def test_shortestPath_iequalsj(self):
@@ -99,10 +95,6 @@ class testshortestPath(unittest.TestCase):
         print(actual)
         expected = 5
         self.assertEqual(actual, expected)
-
-    #def test_shortestPath_
-
-
     
         
 
