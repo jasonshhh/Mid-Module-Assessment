@@ -14,8 +14,10 @@ graph = [[0, 7, NO_PATH, 8],
 #         [NO_PATH, NO_PATH, 0, -1],
 #         [-1, NO_PATH, NO_PATH, 0]]
 vertices = len(graph)
+
+#vertices = (len(graph) + 1)
 #vertices = vertice + 1
-print('Number of vertices:', vertices)
+#print('Number of vertices:', vertices)
 
 # Just testing GitHub again/ one more time
 def shortestPath(i, j, k, p):
