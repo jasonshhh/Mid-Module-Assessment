@@ -47,7 +47,7 @@ def floydWarshall(dist_graph):
     printSolution(dist_graph)
     return dist_graph
 
-#A utility function to print the solution
+# A utility function to print the solution
 def printSolution(graph):
     print("Following matrix shows the shortest distances between every pair of vertices")
     for i in range(vertices):

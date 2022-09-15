@@ -7,9 +7,9 @@ import numpy as np
 
 NO_PATH = sys.maxsize
 graph = [[0, 7, NO_PATH, 8],
-                [NO_PATH, 0, 5, NO_PATH],
-                [NO_PATH, NO_PATH, 0, 2],
-                [NO_PATH, NO_PATH, NO_PATH, 0]]
+        [NO_PATH, 0, 5, NO_PATH],
+        [NO_PATH, NO_PATH, 0, 2],
+        [NO_PATH, NO_PATH, NO_PATH, 0]]
 
 vertices = len(graph)
 #vertices = vertice + 1
@@ -19,9 +19,9 @@ class testFloydWarshall(unittest.TestCase):
     def test_floydWarshall(self):
         NO_PATH = sys.maxsize
         test_graph = [[0, 7, NO_PATH, 8],
-                [NO_PATH, 0, 5, NO_PATH],
-                [NO_PATH, NO_PATH, 0, 2],
-                [NO_PATH, NO_PATH, NO_PATH, 0]]
+                    [NO_PATH, 0, 5, NO_PATH],
+                    [NO_PATH, NO_PATH, 0, 2],
+                    [NO_PATH, NO_PATH, NO_PATH, 0]]
         actual = floydWarshall(test_graph)
         expected = [[0, 7, 12, 8],
                     [NO_PATH, 0, 5, 7], 
@@ -74,10 +74,33 @@ class testFloydWarshall(unittest.TestCase):
         for i in graphs:
             floydWarshall(i)
 
-class testshortestPath(unittest.TestCase):
-    def test_shortestPath_iequalsj(self):
+    # def test_floydWarshall_error(self):
+    #     # for i in range(vertices):
+    #     #     for j in range(vertices):
+    #     vertice = len(graph)
+    #     vertices = vertice + 1
+    #     actual = floydWarshall(graph)
+    #     expected = print('Number of vertices out of range. Check input')
+    #     self.assertEqual(actual, expected)
+    #     for i in range(vertices):
+    #         for j in range(vertices):
+    #             graph[i][j] = shortestPath(i, j, vertices , graph)
         
 
+class testshortestPath(unittest.TestCase):
+    def test_shortestPath_iequalsj(self):
+    
+        actual = shortestPath(1, 1, 3, graph)
+        expected = 0
+        self.assertEqual(actual, expected)
+
+    def test_shortestPath_specific_graph_location(self):
+        actual = shortestPath(1, 2, 3, graph)
+        print(actual)
+        expected = 5
+        self.assertEqual(actual, expected)
+
+    #def test_shortestPath_
 
 
     
