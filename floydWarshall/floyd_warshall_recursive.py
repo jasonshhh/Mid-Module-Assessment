@@ -1,6 +1,4 @@
 import sys
-import itertools
-import numpy as np
 
 # random_graph = np.random.randint(9, size=(4, 4))
 # graph = random_graph.tolist()
