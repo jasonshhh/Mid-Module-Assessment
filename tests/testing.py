@@ -1,7 +1,7 @@
 import unittest
 import sys
-from floyd_warshall_recursive import floydWarshall
-from floyd_warshall_recursive import shortestPath
+from floydWarshall.floyd_warshall_recursive import floydWarshall
+from floydWarshall.floyd_warshall_recursive import shortestPath
 import numpy as np
 #from floyd_warshall_recursive import printSolution
 
