@@ -15,7 +15,6 @@ graph = [
 #         [NO_PATH, NO_PATH, 0, -1],
 #         [-1, NO_PATH, NO_PATH, 0]]
 VERTICES = len(graph)
-
 # VERTICES = (len(graph) + 1)
 # VERTICES = vertice + 1
 # print('Number of VERTICES:', VERTICES)
@@ -27,13 +26,13 @@ def shortest_path(i, j, k, distance_graph):
     '''
     Finds the shortest path matrix in the input graph
     '''
-    if k < 0:
+    if k == 0:
         return distance_graph[i][j]
     if i == j:
         return 0
-    return min(shortest_path(i, j, k-1, distance_graph),
-               shortest_path(i, k, k-1, distance_graph) +
-               shortest_path(k, j, k-1, distance_graph))
+    return min(shortest_path(i, j, k - 1, distance_graph),
+               shortest_path(i, k, k - 1, distance_graph) +
+               shortest_path(k, j, k - 1, distance_graph))
 
 
 def floyd_warshall(dist_graph):
