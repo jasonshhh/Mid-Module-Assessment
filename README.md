@@ -10,7 +10,7 @@ Unit tests and performance tests were conducted to ensure the functions did what
 
                  ---Running The Algorithm---
 
-In the url above, navigate to the 'code' tab and press the green code button. Hit 'download ZIP' and save the project into an appropriate directory and unzip the files.
+In the github url above, navigate to the 'code' tab and press the green code button. Hit 'download ZIP' and save the project into an appropriate directory and unzip the files.
 
 Open command prompt (or other command line interface) and change directory to where the project is saved and move into the folder:
 ./floydWarshall
