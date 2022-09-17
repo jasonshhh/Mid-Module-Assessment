@@ -28,8 +28,8 @@ def shortest_path(i, j, k, distance_graph):
     '''
     if k == 0:
         return distance_graph[i][j]
-    if i == j:
-        return 0
+    if (i, j) != 0:
+        return print('Check Input! There are numbers in the diagonals')
     return min(shortest_path(i, j, k - 1, distance_graph),
                shortest_path(i, k, k - 1, distance_graph) +
                shortest_path(k, j, k - 1, distance_graph))
@@ -55,10 +55,12 @@ def floyd_warshall(dist_graph):
                     return print('Number of vertices out of range.\
  Check input')
             except TypeError:
+                if i == j != 0:
+                    return print('Check Input! There are numbers when i == j')
                 if not any(isinstance(x, str) for x in dist_graph):
                     return print('graph contains an unsupported character\
-                                  type, ensure all characters are integers')
-
+type, ensure all characters are integers')
+   
     print_solution(dist_graph)
     return dist_graph
 
