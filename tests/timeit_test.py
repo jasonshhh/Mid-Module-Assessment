@@ -173,7 +173,7 @@ print('The minimum value\'s from the timieit tests are:\n',
 
 print(
       'Time comparison between the recursive and imperative applications of\
-       the Floyd Warshall Algorithm: \n',
+ the Floyd Warshall Algorithm: \n',
       'The floyd_warshall_recursive.py module: ',
       min(timeit.repeat(stmt=TEST_CODE_4,
                         setup=FLOYD_WARSHALL_4,

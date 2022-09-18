@@ -28,8 +28,8 @@ def shortest_path(i, j, k, distance_graph):
     '''
     if k == 0:
         return distance_graph[i][j]
-    if (i, j) != 0:
-        return print('Check Input! There are numbers in the diagonals')
+    # if (i, j) != 0:
+    #     return print('Check Input! There are numbers in the diagonals')
     return min(shortest_path(i, j, k - 1, distance_graph),
                shortest_path(i, k, k - 1, distance_graph) +
                shortest_path(k, j, k - 1, distance_graph))

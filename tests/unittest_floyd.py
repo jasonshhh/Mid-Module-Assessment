@@ -4,11 +4,8 @@ sys.path.insert(0, 'c:\\Users\\jason\\Documents\\Data Science and AI MSc\\Softwa
 from floydWarshall.floyd_warshall_recursive import *
 from floydWarshall.floyd_warshall_imperative import floyd
 
-
-
 # from floydWarshall.floyd_warshall_recursive import floyd_warshall
 # from floydWarshall.floyd_warshall_recursive import shortest_path
-
 # from floyd_warshall_recursive import printSolution
 
 NO_PATH = sys.maxsize
@@ -64,7 +61,6 @@ class TestFloydWarshall(unittest.TestCase):
 ensure all characters are integers')
         self.assertEqual(actual, expected)
 
-
     # def test_floyd_warshall_negative_loop(self):
     #     no_path = sys.maxsize
     #     test_graph = [[0, -7, no_path, 8],
@@ -75,7 +71,6 @@ ensure all characters are integers')
     #     expected = print('A negative loop has been found')
     #     self.assertEqual(actual, expected)
     
-
     def test_floyd_warshall_incorrect_graph_shape(self):
         '''
         Tests for incorrect graph shape
