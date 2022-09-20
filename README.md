@@ -44,6 +44,9 @@ Following matrix shows the shortest distances between every pair of vertices
 
             ---Running unit tests and performance tests---
 
+You must insert the path to the root directory of the project into sys.path.insert()
+at the top of the unittest_floyd.py and timeit_test.py
+
 In the command line interface navigate to:
 
 ./tests
@@ -51,19 +54,19 @@ In the command line interface navigate to:
 This folder contains unit tests and performance tests. 
 
 Enter the command:
-py unittest.py
+python -m unittest unittest_floyd.py
 
 This runs various unit tests to confirm the functions are performing as expected.
 
 Enter the command:
-py timeit_tests.py
+py timeit_test.py
 
-This tests the time taken for the functions to run. It also compares the time between the two algoritm implentations.
+This tests the time taken for the functions to run. It also compares the time between the 6 algorithm implentations.
 
 
                 ---Changing the parameters---
 
-The user is able to change the parameters by opening the files in an IDE an changing the 'graph'. Changing various parameters will lead to error messages or a successful operation. 
+The user is able to change the parameters by opening the files in an IDE and changing the 'graph'. Changing various parameters will lead to error messages or a successful operation. 
 
                     -------License-------
 

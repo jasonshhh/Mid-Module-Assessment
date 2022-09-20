@@ -1,8 +1,10 @@
 import unittest
 import sys
-sys.path.insert(0, 'c:\\Users\\jason\\Documents\\Data Science and AI MSc\\Software Development in Practice\\mid_module_assessment')
+# If I put the below into pep8 (i.e. make the line shorter, 
+# it does not read the path)
+sys.path.insert(0, '')
 from floydWarshall.floyd_warshall_recursive import *
-from floydWarshall.floyd_warshall_imperative import floyd
+# from floydWarshall.floyd_warshall_imperative_itertools import floyd
 
 # from floydWarshall.floyd_warshall_recursive import floyd_warshall
 # from floydWarshall.floyd_warshall_recursive import shortest_path
@@ -15,7 +17,6 @@ graph = [
         [NO_PATH, NO_PATH, 0, 2],
         [NO_PATH, NO_PATH, NO_PATH, 0]
         ]
-
 VERTICES = len(graph)
 # VERTICES = vertice + 1
 # VERTICES = len(graph[0])
@@ -29,7 +30,7 @@ class TestFloydWarshall(unittest.TestCase):
         '''
         Tesitng the floyd_warshall function
         '''
-        no_path = sys.maxsize
+        no_path = NO_PATH
         test_graph = [
                      [0, 7, no_path, 8],
                      [no_path, 0, 5, no_path],
@@ -45,7 +46,7 @@ class TestFloydWarshall(unittest.TestCase):
                    ]
         self.assertEqual(actual, expected)
 
-    def test_floyd_warshall_incorrect_input(self):
+    def test_floyd_warshall_unsupported_character(self):
         '''
         Testing the function for incorrect input matrix
         '''
@@ -70,7 +71,7 @@ ensure all characters are integers')
     #     actual = floydWarshall(test_graph)
     #     expected = print('A negative loop has been found')
     #     self.assertEqual(actual, expected)
-    
+
     def test_floyd_warshall_incorrect_graph_shape(self):
         '''
         Tests for incorrect graph shape

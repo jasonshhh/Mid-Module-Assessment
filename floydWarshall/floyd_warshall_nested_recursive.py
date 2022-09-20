@@ -1,6 +1,5 @@
 import sys
 
-
 # random_graph = np.random.randint(9, size=(4, 4))
 # graph = random_graph.tolist()
 NO_PATH = sys.maxsize
@@ -10,10 +9,6 @@ graph = [
         [NO_PATH, NO_PATH, 0, 2],
         [NO_PATH, NO_PATH, NO_PATH, 0]
         ]
-# graph = [[0, 1, NO_PATH, NO_PATH],
-#         [NO_PATH, 0, -1, NO_PATH],
-#         [NO_PATH, NO_PATH, 0, -1],
-#         [-1, NO_PATH, NO_PATH, 0]]
 VERTICES = len(graph)
 # VERTICES = (len(graph) + 1)
 # VERTICES = vertice + 1
@@ -22,34 +17,29 @@ VERTICES = len(graph)
 # Just testing GitHub again/ one more time
 
 
-def shortest_path(i, j, k, distance_graph):
-    '''
-    Finds the shortest path matrix in the input graph
-    '''
-    if k == 0:
-        return distance_graph[i][j]
-    if i == j:
-        return 0
-    # if i == j != 0:
-    #     return print('Check Input! There are numbers in the diagonals')
-    return min(shortest_path(i, j, k - 1, distance_graph),
-               shortest_path(i, k, k - 1, distance_graph) +
-               shortest_path(k, j, k - 1, distance_graph))
-
-
 def floyd_warshall(dist_graph):
     '''
     Reads the input graph and iterates through i and j,
     giving the values to shortest_path function
     '''
+    def shortest_path(i, j, k):
+        '''
+        Finds the shortest path matrix in the input graph
+        '''
+        if k == 0:
+            return dist_graph[i][j]
+        if i == j:
+            return 0
+        # if i == j != 0:
+        #     return print('Check Input! There are numbers in the diagonals')
+        return min(shortest_path(i, j, k - 1),
+                   shortest_path(i, k, k - 1) +
+                   shortest_path(k, j, k - 1))
+
     for i in range(VERTICES):
         for j in range(VERTICES):
-            if i == j and shortest_path(i, j, VERTICES - 1,
-                                        dist_graph) < 0:
-                raise Exception('The solution contains negative loops')
             try:
-                dist_graph[i][j] = shortest_path(i, j, VERTICES - 1,
-                                                 dist_graph)
+                dist_graph[i][j] = shortest_path(i, j, VERTICES - 1)
             except IndexError:
                 iterating_dist_graph = iter(dist_graph)
                 list_len = len(next(iterating_dist_graph))
@@ -64,8 +54,8 @@ def floyd_warshall(dist_graph):
                 if not any(isinstance(x, str) for x in dist_graph):
                     return print('graph contains an unsupported character\
 type, ensure all characters are integers')
-
-    print_solution(dist_graph)
+  
+    # print_solution(dist_graph)
     return dist_graph
 
 

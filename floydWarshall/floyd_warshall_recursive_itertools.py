@@ -1,5 +1,5 @@
 import sys
-
+import itertools
 
 # random_graph = np.random.randint(9, size=(4, 4))
 # graph = random_graph.tolist()
@@ -42,27 +42,27 @@ def floyd_warshall(dist_graph):
     Reads the input graph and iterates through i and j,
     giving the values to shortest_path function
     '''
-    for i in range(VERTICES):
-        for j in range(VERTICES):
-            if i == j and shortest_path(i, j, VERTICES - 1,
-                                        dist_graph) < 0:
-                raise Exception('The solution contains negative loops')
-            try:
-                dist_graph[i][j] = shortest_path(i, j, VERTICES - 1,
-                                                 dist_graph)
-            except IndexError:
-                iterating_dist_graph = iter(dist_graph)
-                list_len = len(next(iterating_dist_graph))
-                if not all(len(list_in_graph) == list_len for list_in_graph
-                           in iterating_dist_graph):
-                    return print('graph shape has to be square')
-                if VERTICES != len(dist_graph):
-                    return print('Number of vertices out of range.\
+    for i, j in itertools.product(range(VERTICES),
+                                  range(VERTICES)):
+        if i == j and shortest_path(i, j, VERTICES - 1,
+                                    dist_graph) < 0:
+            raise Exception('The solution contains negative loops')
+        try:
+            dist_graph[i][j] = shortest_path(i, j, VERTICES - 1,
+                                             dist_graph)
+        except IndexError:
+            iterating_dist_graph = iter(dist_graph)
+            list_len = len(next(iterating_dist_graph))
+            if not all(len(list_in_graph) == list_len for list_in_graph
+                       in iterating_dist_graph):
+                return print('graph shape has to be square')
+            if VERTICES != len(dist_graph):
+                return print('Number of vertices out of range.\
  Check input')
-            except TypeError:
+        except TypeError:
 
-                if not any(isinstance(x, str) for x in dist_graph):
-                    return print('graph contains an unsupported character\
+            if not any(isinstance(x, str) for x in dist_graph):
+                return print('graph contains an unsupported character\
 type, ensure all characters are integers')
 
     print_solution(dist_graph)

@@ -1,5 +1,6 @@
+# This code is from https://www.geeksforgeeks.org/floyd-warshall
+# -algorithm-dp-16/
 import sys
-import itertools
 
 NO_PATH = sys.maxsize
 
@@ -9,47 +10,32 @@ graph = [
         [NO_PATH, NO_PATH, 0, 2],
         [NO_PATH, NO_PATH, NO_PATH, 0]
         ]
-VERTICES = len(graph[0])
+V = len(graph)
 
 
-def floyd(distance):
+def floyd_warshall(dist):
     """
-    A simple implementation of Floyd's algorithm
+    dist[][] will be the output
+    intermediate vertices
     """
-    for intermediate, start_node, end_node\
-        in itertools.product(range(VERTICES),
-                             range(VERTICES),
-                             range(VERTICES)):
-        # Assume that if start_node and end_node are the same
-        # then the distance would be zero
-        if start_node == end_node:
-            distance[start_node][end_node] = 0
-            continue
-        # return all possible paths and find the minimum
-        distance[start_node][end_node] = min(distance[start_node][end_node],
-                                             distance[start_node][intermediate]
-                                             + distance[intermediate][end_node]
-                                             )
 
-        # Any value that have sys.maxsize has no path
-    print_solution(distance)
+    for k in range(V):
 
+        # pick all vertices as source one by one
+        for i in range(V):
 
-# A utility function to print the solution
-def print_solution(distance):
-    '''
-    Prints the output in a more aesthetic format
-    '''
-    print("Following matrix shows the shortest distances\
- between every pair of vertices")
-    for i in range(VERTICES):
-        for j in range(VERTICES):
-            if graph[i][j] == NO_PATH:
-                print("%9s" % ("NO_PATH"), end='')
-            else:
-                print("%9d" % (distance[i][j]), end='')
-            if j == VERTICES-1:
-                print()
+            # Pick all vertices as destination for the
+            # above picked source
+            for j in range(V):
+
+                # If vertex k is on the shortest path from
+                # i to j, then update the value of dist[i][j]
+                dist[i][j] = min(dist[i][j],
+                                 dist[i][k] + dist[k][j]
+                                 )
+
+    return dist
 
 
-floyd(graph)
+if __name__ == "__main__":
+    floyd_warshall(graph)
